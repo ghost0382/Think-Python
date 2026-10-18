@@ -1,0 +1,68 @@
+sudo apt install git
+git config --global user.name "ghost0382"
+git config --global user.email "giuseppe.caltroni@gmail.com"
+git config --gloabl --list
+
+
+mkdir varie cartelle
+
+git init			        | crea la cartella .git
+git status	        		| controlla lo stato della repo
+git add <filename>	    	| aggiunge il file a git
+git commit -m "messaggio"	| fa il commit in locale a tutti gli add
+git log --oneline	    	| cronologia e modifiche
+
+
+
+
+find ~/GitHub -mindepth 2 -type d -name .git
+
+
+
+
+
+sudo apt install gh
+gh auth login
+
+
+mkdir -p ~/GitHub
+cd ~/GitHub
+
+USER_GH=$(gh api user --jq '.login')
+
+gh repo list "$USER_GH" --limit 1000 --json name \
+  --jq '.[].name' |
+while IFS= read -r repo; do
+    gh repo clone "$USER_GH/$repo"
+done
+
+
+
+
+
+
+
+
+
+I tre comandi che userai più spesso
+Scaricare gli aggiornamenti
+bash
+
+git pull
+
+Recupera le modifiche pubblicate su GitHub.
+
+Salvare le modifiche localmente
+bash
+
+git add .
+git commit -m "Aggiorna il progetto"
+
+Registra una nuova versione nella cronologia Git.
+
+Caricare le modifiche su GitHub
+bash
+
+git push
+
+Pubblica i commit sul repository remoto.
